@@ -40,23 +40,14 @@ SecurityEvent
 - Security Operations  
 
 ## 📸 Screenshots
-## 📸 Screenshots
 
 ### Azure Log Analysis
-![Azure Logs](azure-logs.png)
 
 ### Alert Rule Triggered
-![Azure Alert](azure-alert.png)
 
 ## 📸 Screenshots
 
-### Azure Log Analysis (Log Analytics Workspace)
-Query used to detect failed login attempts (EventID 4625):
-![Azure Logs](azure-logs.png)
 
-### Alert Rule Triggered (Azure Monitor)
-Configured alert to detect repeated failed login attempts:
-![Azure Alert](azure-alert-realistic.png)
 
 ## 📈 Outcome
 This lab demonstrates practical experience with cloud-based security monitoring, detection engineering, and incident response workflows aligned with enterprise environment
