@@ -53,4 +53,6 @@ SecurityEvent
 
 
 ## 📈 Outcome
+<img width="479" height="283" alt="Screenshot 2026-05-05 063743" src="https://github.com/user-attachments/assets/bfe37127-e01e-4568-b5e3-f5b91f8a2b76" />
+
 This lab demonstrates practical experience with cloud-based security monitoring, detection engineering, and incident response workflows aligned with enterprise environment
