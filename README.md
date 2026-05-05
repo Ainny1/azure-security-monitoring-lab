@@ -42,10 +42,13 @@ SecurityEvent
 ## 📸 Screenshots
 
 ### Azure Log Analysis
-
-### Alert Rule Triggered
+<img width="1006" height="600" alt="Screenshot 2026-05-05 055339" src="https://github.com/user-attachments/assets/50f6ae4d-908e-4c8c-b908-f6a06c690fd8" />
 
 ## 📸 Screenshots
+### Alert Rule Triggered
+<img width="1000" height="500" alt="IMG_9740" src="https://github.com/user-attachments/assets/9ec06aab-76c7-488f-8a60-ff3644ad5159" />
+
+
 
 
 
