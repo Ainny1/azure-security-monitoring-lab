@@ -1,0 +1,26 @@
+// Azure Monitor / Microsoft Sentinel KQL: repeated failed sign-ins followed by success
+// Data source: SigninLogs (Microsoft Entra ID diagnostic logs).
+// Tune the threshold, time window, and exclusions for your environment.
+// This is a hunting query, not a production-ready alert rule.
+let lookback = 24h;
+let failureWindow = 15m;
+let minFailures = 5;
+let failures = SigninLogs
+| where TimeGenerated >= ago(lookback)
+| where ResultType != "0"
+| where isnotempty(UserPrincipalName) and isnotempty(IPAddress)
+| summarize FailureCount=count(), FirstFailure=min(TimeGenerated), LastFailure=max(TimeGenerated)
+    by UserPrincipalName, IPAddress, bin(TimeGenerated, failureWindow)
+| where FailureCount >= minFailures
+| project UserPrincipalName, IPAddress, FailureCount, FirstFailure, LastFailure;
+let successes = SigninLogs
+| where TimeGenerated >= ago(lookback)
+| where ResultType == "0"
+| where isnotempty(UserPrincipalName) and isnotempty(IPAddress)
+| project UserPrincipalName, IPAddress, SuccessTime=TimeGenerated, AppDisplayName;
+failures
+| join kind=inner successes on UserPrincipalName, IPAddress
+| where SuccessTime between (LastFailure .. LastFailure + failureWindow)
+| summarize arg_min(SuccessTime, *) by UserPrincipalName, IPAddress, FirstFailure
+| project UserPrincipalName, IPAddress, FailureCount, FirstFailure, LastFailure, SuccessTime, AppDisplayName
+| order by SuccessTime desc
